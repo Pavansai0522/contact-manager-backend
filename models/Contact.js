@@ -9,6 +9,6 @@ const ContactSchema = new mongoose.Schema({
   phone: String,
   contactStatus: String,
   tags: [String],
-});
+}, { timestamps: true }); // 👈 This adds createdAt & updatedAt automatically
 
 module.exports = mongoose.model('Contact', ContactSchema);

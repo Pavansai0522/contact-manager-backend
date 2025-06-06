@@ -49,7 +49,7 @@ app.get('/contacts', async (req, res) => {
     const tagList = tags.split(',').map(t => t.trim());
     filter.tags = { $in: tagList };
   }
-  const limit = 5;
+  const limit = 15;
   const skip = (page - 1) * limit;
   const total = await Contact.countDocuments(filter);
   const contacts = await Contact.find(filter).skip(skip).limit(limit);
