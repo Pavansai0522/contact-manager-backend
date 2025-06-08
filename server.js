@@ -43,7 +43,7 @@ app.get('/contacts', async (req, res) => {
   console.log('📄 Page:', page, 'Skip:', skip, 'Limit:', limit);
   const total = await Contact.countDocuments(filter);
   const contacts = await Contact.find(filter).skip(skip).limit(limit);
-  res.send({ contacts, totalPages: Math.ceil(total / limit) });
+  res.send({ contacts, totalPages: Math.ceil(total / limit),totalContacts: total });
 });
 
 app.put('/contacts/:id', async (req, res) => {
