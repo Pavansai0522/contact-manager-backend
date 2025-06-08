@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 
 const ContactSchema = new mongoose.Schema({
-  firstName: String,
-  lastName: String,
-  email: { type: String, required: true },
+  firstName: { type: String, required: true },
+  lastName:  { type: String, required: true },
+  email:     { type: String, required: true },
   emailStatus: {
     type: String,
     enum: ['Subscribed', 'Unsubscribed', 'Not Specified'],
@@ -11,7 +11,11 @@ const ContactSchema = new mongoose.Schema({
   },
   list: String,
   phone: String,
-  contactStatus: String // e.g. New Lead, Engaged Lead, etc.
-});
+  contactStatus: {
+    type: String,
+    enum: ['New Lead', 'Engaged Lead', 'Stale Lead', 'New Sale', 'Active', 'Inactive'],
+    default: 'New Lead'
+  }
+}, { timestamps: true });
 
 module.exports = mongoose.model('Contact', ContactSchema);
