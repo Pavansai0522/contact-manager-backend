@@ -37,14 +37,18 @@ app.get('/contacts', async (req, res) => {
   }
 
   const limit = parseInt(req.query.limit) || 15;
-  console.log('🔍 Requested limit:', req.query.limit, '→ Parsed limit:', limit);
-
   const skip = (page - 1) * limit;
-  console.log('📄 Page:', page, 'Skip:', skip, 'Limit:', limit);
+
   const total = await Contact.countDocuments(filter);
   const contacts = await Contact.find(filter).skip(skip).limit(limit);
-  res.send({ contacts, totalPages: Math.ceil(total / limit),totalContacts: total });
+
+  res.send({
+    contacts,
+    totalPages: Math.ceil(total / limit),
+    totalContacts: total // ✅ make sure this line is here
+  });
 });
+
 
 app.put('/contacts/:id', async (req, res) => {
   try {
