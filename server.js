@@ -29,6 +29,7 @@ app.post('/contacts', async (req, res) => {
 app.get('/contacts', async (req, res) => {
   const { emailStatus, contactStatus, page = 1, search } = req.query;
   const filter = {};
+
   if (emailStatus) filter.emailStatus = emailStatus;
   if (contactStatus) filter.contactStatus = contactStatus;
   if (search) {
@@ -39,14 +40,21 @@ app.get('/contacts', async (req, res) => {
   const limit = parseInt(req.query.limit) || 15;
   const skip = (page - 1) * limit;
 
-  const total = await Contact.countDocuments(filter);
-  const contacts = await Contact.find(filter).skip(skip).limit(limit);
+  try {
+    const total = await Contact.countDocuments(filter);
+    const contacts = await Contact.find(filter).skip(skip).limit(limit);
 
-  res.send({
-    contacts,
-    totalPages: Math.ceil(total / limit),
-    totalContacts:total  
-  });
+    console.log("✅ Sending totalContacts:", total); // Add debug log
+
+    res.json({
+      contacts,
+      totalPages: Math.ceil(total / limit),
+      totalContacts: total // ✅ You missed this in your deploy
+    });
+  } catch (err) {
+    console.error("❌ Error fetching contacts:", err);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
 });
 
 
