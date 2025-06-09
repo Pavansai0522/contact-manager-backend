@@ -29,11 +29,17 @@ app.post('/contacts', async (req, res) => {
 app.get('/contacts', async (req, res) => {
   const { emailStatus, contactStatus, page = 1, search } = req.query;
   const filter = {};
+
   if (emailStatus) filter.emailStatus = emailStatus;
   if (contactStatus) filter.contactStatus = contactStatus;
+
   if (search) {
     const regex = new RegExp(search, 'i');
-    filter.$or = [{ firstName: regex }, { lastName: regex }, { email: regex }];
+    filter.$or = [
+      { firstName: regex },
+      { lastName: regex },
+      { email: regex }
+    ];
   }
 
   const limit = parseInt(req.query.limit) || 15;
@@ -45,9 +51,10 @@ app.get('/contacts', async (req, res) => {
   res.send({
     contacts,
     totalPages: Math.ceil(total / limit),
-    totalContacts: total // ✅ This must be added
+    totalContacts: total // ✅ This line is REQUIRED
   });
 });
+
 
 
 
