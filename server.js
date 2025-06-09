@@ -45,7 +45,7 @@ app.get('/contacts', async (req, res) => {
   res.send({
     contacts,
     totalPages: Math.ceil(total / limit),
-    totalContacts: total  // ✅ Required
+    totalContacts:total  
   });
 });
 
