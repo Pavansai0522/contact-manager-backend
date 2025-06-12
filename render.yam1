@@ -3,6 +3,7 @@ services:
     name: contact-manager-backend
     runtime: java
     buildCommand: ./gradlew build -x test
-    startCommand: java -jar build/libs/app.jar
+    startCommand: java -jar build/libs/demo-0.0.1-SNAPSHOT.jar
+
     plan: free
     region: oregon
