@@ -13,17 +13,35 @@ java {
 	}
 }
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 8f084ae1d35aa4ca1a8118502f82389e06b4f92f
 repositories {
 	mavenCentral()
 }
 
 dependencies {
+<<<<<<< HEAD
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
+=======
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.2'
+}
+
+
+
+>>>>>>> 8f084ae1d35aa4ca1a8118502f82389e06b4f92f
 tasks.named('test') {
 	useJUnitPlatform()
 }
