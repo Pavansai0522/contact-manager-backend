@@ -2,9 +2,9 @@ HELP.md
 .gradle
 
 # Ignore all build output except the JAR
-/build
+!/build/libs/
 !/build/libs/contactmanager-0.0.1-SNAPSHOT.jar
-
+# Ignore all Gradle wrapper files except the JAR
 .vscode
 
 !gradle/wrapper/gradle-wrapper.jar
