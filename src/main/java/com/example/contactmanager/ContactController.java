@@ -4,7 +4,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
 import java.util.Arrays;
 import java.util.List;
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "@CrossOrigin(origins = \"https://contact-manager-frontend-git-...vercel.app\")\r\n" + //
+        "")
 @RestController
 @RequestMapping("/contacts")
 public class ContactController {
