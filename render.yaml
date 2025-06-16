@@ -3,5 +3,5 @@ services:
     name: contact-manager-java
     env: java
     plan: free
-    buildCommand: ./gradlew build
-    startCommand: java -jar build/libs/contactmanager-0.0.1-SNAPSHOT-plain.jar
+    buildCommand: ./gradlew bootJar
+    startCommand: java -jar build/libs/contactmanager-0.0.1-SNAPSHOT.jar
