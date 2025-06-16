@@ -1,14 +1,12 @@
 HELP.md
 .gradle
+
 # Ignore all build output except the JAR
-build/*
-!build/libs/
 /build
+!/build/libs/
 !/build/libs/*.jar
-.gradle
+
 .vscode
-
-
 
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
