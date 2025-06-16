@@ -1,6 +1,10 @@
 HELP.md
 .gradle
-build/
+# Ignore all build output except the JAR
+build/*
+!build/libs/
+!build/libs/*.jar
+
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
