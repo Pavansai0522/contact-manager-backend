@@ -3,8 +3,7 @@ HELP.md
 
 # Ignore all build output except the JAR
 /build
-!/build/libs/
-!/build/libs/*.jar
+!/build/libs/contactmanager-0.0.1-SNAPSHOT-plain.jar
 
 .vscode
 
