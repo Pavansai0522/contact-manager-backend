@@ -1,9 +1,7 @@
 services:
   - type: web
     name: contact-manager-backend
-    runtime: java
     buildCommand: ./gradlew build -x test
     startCommand: java -jar build/libs/contactmanager-0.0.1-SNAPSHOT.jar
-    env: java
     plan: free
     region: oregon
