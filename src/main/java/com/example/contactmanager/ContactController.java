@@ -2,10 +2,16 @@ package com.example.contactmanager;
 
 import com.example.contactmanager.repository.ContactRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/contacts")
@@ -21,10 +27,31 @@ public class ContactController {
         }
 
     // ✅ GET all contacts
-    @GetMapping
-    public List<Contact> getAllContacts() {
-        return contactRepository.findAll();
-    }
+        @GetMapping
+                public ResponseEntity<?> getAllContacts(
+                @RequestParam(defaultValue = "1") int page,
+                @RequestParam(defaultValue = "15") int limit,
+                @RequestParam(defaultValue = "") String search) {
+
+            Pageable pageable = PageRequest.of(page - 1, limit, Sort.by("firstName").ascending());
+
+            Page<Contact> contactPage;
+            if (!search.isEmpty()) {
+                contactPage = contactRepository.findByFirstNameContainingIgnoreCaseOrLastNameContainingIgnoreCase(
+                        search, search, pageable);
+            } else {
+                contactPage = contactRepository.findAll(pageable);
+            }
+
+            Map<String, Object> response = new HashMap<>();
+            response.put("contacts", contactPage.getContent());
+            response.put("totalPages", contactPage.getTotalPages());
+            response.put("totalContacts", contactPage.getTotalElements());
+
+            return ResponseEntity.ok(response);
+        }
+
+
 
     // ✅ POST create a contact
     @PostMapping
