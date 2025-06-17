@@ -14,6 +14,11 @@ public class ContactController {
 
     @Autowired
     private ContactRepository contactRepository;
+       
+    @GetMapping("/")
+        public String healthCheck() {
+            return "✅ Backend is running!";
+        }
 
     // ✅ GET all contacts
     @GetMapping
