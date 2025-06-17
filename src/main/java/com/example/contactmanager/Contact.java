@@ -1,6 +1,5 @@
 package com.example.contactmanager;
 
-
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -20,6 +19,19 @@ public class Contact {
     private String phone;
     private String contactStatus;
     private List<String> tags;
+
+    // ✅ Constructor for importContacts()
+    public Contact(String firstName, String lastName, String email, String emailStatus,
+                   String list, String phone, String contactStatus, List<String> tags) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.emailStatus = emailStatus;
+        this.list = list;
+        this.phone = phone;
+        this.contactStatus = contactStatus;
+        this.tags = tags;
+    }
 
     // ===== Getters and Setters =====
     public String getId() {

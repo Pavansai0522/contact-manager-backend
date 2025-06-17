@@ -49,4 +49,15 @@ public class ContactController {
         contactRepository.deleteById(id);
         return ResponseEntity.noContent().build();
     }
+
+// ✅ IMPORT endpoint at the bottom
+    @PostMapping("/import")
+    public ResponseEntity<List<Contact>> importContacts() {
+        Contact c1 = new Contact("John", "Doe", "john@example.com", "Subscribed", "List A", "1234567890", "New Lead", List.of("tag1", "tag2"));
+        Contact c2 = new Contact("Jane", "Smith", "jane@example.com", "Unsubscribed", "List B", "9876543210", "Active", List.of("tag3"));
+
+        List<Contact> imported = List.of(c1, c2);
+        contactRepository.saveAll(imported);
+        return ResponseEntity.ok(imported);
+    }
 }
