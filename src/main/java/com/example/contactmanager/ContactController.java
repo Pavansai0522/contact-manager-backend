@@ -1,6 +1,5 @@
 package com.example.contactmanager;
 
-import com.example.contactmanager.models.Contact;
 import com.example.contactmanager.repository.ContactRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

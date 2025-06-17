@@ -1,4 +1,5 @@
-package com.example.contactmanager.models;
+package com.example.contactmanager;
+
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
